@@ -35,11 +35,14 @@ public class checador extends Frame implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+			
 			txtRecord = area.getText();
 			//l.setText(rd.entry.toString());
+			txtRecord = txtRecord.replaceAll("\n", "");
+			txtRecord = txtRecord.replaceAll("\r", "");
 			record(txtRecord);
-			area.setCaretPosition(0);
 			area.setText("");
+			area.setCaretPosition(0);
 		}
 	}
 
