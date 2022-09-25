@@ -29,12 +29,12 @@ public class relojProcess extends Thread {
 		
 		// h m s lo concatena con un 0 para validar 02:02:02 y lo hace string
 		
-		/*System.out.println("hora: "+ hora +" minuto: "+ minuto +" segundo: " + segundo);*/
+		//System.out.println("horas: "+ hora +" minutos: "+ minuto +" segundos: " + segundo);
 		if (hora == 24 && vh != 0) hh = 0; 
+		if (minuto == 60 && vm != 0) { hh++; mm = 0; }
 		if (hora == 23 && minuto == 60 && vh != 0) hh = 0;
-		if (minuto == 60 && vm != 0) { mm = 0; }
 		if (segundo == 60 && vs != 0) { ss = 0; mm++; }
-		if (minuto == 59 && segundo == 60 && vm !=0 && vs != 0) { mm = 0; ss = 0; }
+		if (minuto == 59 && segundo == 60 && vm !=0 && vs != 0) { hh++; mm = 0; ss = 0; }
 		if (hora == 23 && minuto == 59 && segundo == 60) { hh = 0; mm = 0; ss = 0;  }
 		
 		if(hh < 10) { h = ("0" + hh); }
