@@ -51,6 +51,7 @@ public class relojProcess extends Thread {
 		reloj = h + ":" + m + ":" + s;
 		check.reloj=reloj;
 		check.l.setText(reloj);
+		check.r.setText("Ingrese su numero de usuario y presione enter");
 
 		System.out.println(reloj);
 		return reloj;
@@ -77,7 +78,13 @@ public class relojProcess extends Thread {
 							calculate(hora, minuto, segundo);
 							
 							try {
-								sleep(1000);
+								if(check.bandera) {
+									sleep(3500);
+									segundo = segundo+3;
+									check.bandera = false;
+								}else {
+									sleep(1000);
+								}
 							}catch (InterruptedException e) {
 								e.printStackTrace();
 							}
