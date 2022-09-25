@@ -9,6 +9,7 @@ public class relojProcess extends Thread {
 	String reloj, h, m, s;
 	
 	
+	
 	public relojProcess (int hora, int minuto, int segundo) {
 		this.hora = hora;
 		this.minuto = minuto;

@@ -5,6 +5,7 @@ public class main {
 		// TODO Auto-generated method stub
 		relojProcess reloj = new relojProcess(5, 55, 55);
 		
+		new checador(reloj);
 		reloj.start();
 		
 		reloj.join();
