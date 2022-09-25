@@ -7,16 +7,18 @@ public class relojProcess extends Thread {
 	vh, vm, vs,
 	wl = 2;
 	String reloj, h, m, s;
+	checador check;
 	
 	
-	
-	public relojProcess (int hora, int minuto, int segundo) {
+	public relojProcess (int hora, int minuto, int segundo, checador check) {
+		this.check = check;
 		this.hora = hora;
 		this.minuto = minuto;
 		this.segundo = segundo;
 		this.vh = 0;
 		this.vm = 0;
 		this.vs = 0;
+		
 	}
 	
 	public String calculate(int hora, int minuto, int segundo) {
@@ -47,6 +49,8 @@ public class relojProcess extends Thread {
 		else { s = "" + ss; }
 		
 		reloj = h + ":" + m + ":" + s;
+		check.reloj=reloj;
+		check.l.setText(reloj);
 
 		System.out.println(reloj);
 		return reloj;

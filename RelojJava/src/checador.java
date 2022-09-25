@@ -9,12 +9,11 @@ public class checador extends Frame implements KeyListener {
 	String txtRecord, t1;
 	char temp;
 	static register rd = new register();
-	relojProcess rj;
+	String reloj;
 
-	checador(relojProcess reloj) {
-		this.rj = reloj;
+	checador() {
 		l = new Label();
-		l.setBounds (20, 50, 250, 20);  
+		l.setBounds (20, 50, 250, 20);
 		area = new TextArea();
 		area.setBounds (20, 80, 300, 300);
 		area.addKeyListener(this);
@@ -56,7 +55,6 @@ public class checador extends Frame implements KeyListener {
 			e1.printStackTrace();
 		}
 
-		 //l.setText (area.getText()); 
 		 //area.setText("");
 		 //l.setText (""); 
 	}
@@ -64,11 +62,11 @@ public class checador extends Frame implements KeyListener {
 	public void record (String txt) {
 		if (rd.entry.contains(txt)) { 
 			rd.out.add(txt);
-			l.setText(txt +" salida: " + rj.reloj);
+			l.setText(txt +" salida: " + reloj);
 		}
 		else {
 			rd.entry.add(txt);
-			l.setText(txt +" entrada: " + rj.reloj); 
+			l.setText(txt +" entrada: " + reloj); 
 		}
 		return;
 		
