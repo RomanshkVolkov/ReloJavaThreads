@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.util.Scanner;
 
 public class checador extends Frame implements KeyListener {
-	Label l, r; 
+	Label l, r, l3;
 	TextArea area;    
 	static Scanner sc = new Scanner(System.in);
 	String txtRecord, t1;
@@ -14,16 +14,19 @@ public class checador extends Frame implements KeyListener {
 
 	checador() {
 		l = new Label();
-		l.setBounds (20, 50, 250, 20);
+		l.setBounds (160, 50, 250, 20);
 		r = new Label();
-		r.setBounds (20, 70, 300, 20);
+		r.setBounds (50, 70, 250, 20);
+		l3 = new Label();
+		l3.setBounds(120, 120, 250, 20);
 		area = new TextArea();
-		area.setBounds (20, 80, 300, 300);
+		area.setBounds (150, 100, 100, 20);
 		area.addKeyListener(this);
 		add(l);  
 		add(r);
+		add(l3);
 		add(area);
-		setSize (400, 400);    
+		setSize (400, 170);    
         setLayout (null);    
         setVisible (true);
 	}
@@ -32,18 +35,18 @@ public class checador extends Frame implements KeyListener {
 	
 	public void keyTyped(KeyEvent e) {
 		  
-		bandera = true;
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
-			
+
+			bandera = true;
 			txtRecord = area.getText();
 			//l.setText(rd.entry.toString());
 			txtRecord = txtRecord.replaceAll("\n", "");
 			txtRecord = txtRecord.replaceAll("\r", "");
-			record(txtRecord);
+			record("Usuario No. " + txtRecord);
 			area.setText("");
 			area.setCaretPosition(0);
 		}
@@ -65,13 +68,17 @@ public class checador extends Frame implements KeyListener {
 	
 	public void record (String txt) {
 		if (rd.entry.contains(txt)) { 
-			rd.out.add(txt);
+			t1 = l3.getText();
+			rd.history.add(t1 + " - " + txt +" salida: " + reloj);
+			rd.entry.remove(txt);
 			l.setText(txt +" salida: " + reloj);
+			l3.setText(txt +" salida: " + reloj);
 			r.setText("");
 		}
 		else {
 			rd.entry.add(txt);
 			l.setText(txt +" entrada: " + reloj); 
+			l3.setText(txt +" entrada: " + reloj); 
 			r.setText("");
 		}
 		return;
