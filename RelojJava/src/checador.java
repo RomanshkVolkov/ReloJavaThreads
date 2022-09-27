@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
 
-public class checador extends Frame implements KeyListener {
+public class checador extends Frame implements KeyListener, Runnable {
 	Label l, r, l3;
 	TextArea area;    
 	static Scanner sc = new Scanner(System.in);
@@ -31,6 +31,7 @@ public class checador extends Frame implements KeyListener {
         setVisible (true);
 	}
 	
+	
 	@Override
 	
 	public void keyTyped(KeyEvent e) {
@@ -49,21 +50,19 @@ public class checador extends Frame implements KeyListener {
 			record("Usuario No. " + txtRecord);
 			area.setText("");
 			area.setCaretPosition(0);
+			try {
+				 wait();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		//l.setText ("Hora de registro: "); 
-		 try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		 
 
-		 //area.setText("");
-		 //l.setText (""); 
 	}
 	
 	public void record (String txt) {
@@ -83,6 +82,15 @@ public class checador extends Frame implements KeyListener {
 		}
 		return;
 		
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while (true) {
+			
+		}
 	}
 
 }

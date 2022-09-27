@@ -6,11 +6,13 @@ public class main {
 		
 		checador check = new checador();
 		relojProcess reloj = new relojProcess(23, 59, 55, check);
-		
+		Thread t1 = new Thread(check);
 		reloj.start();
+		t1.start();
+		
 		
 		reloj.join();
-		
+		t1.join();
 		
 	}
 
