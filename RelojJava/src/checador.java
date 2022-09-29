@@ -42,6 +42,12 @@ public class checador extends Frame implements KeyListener, Runnable {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+
+			if (stop) {
+				area.setText("");
+				return;
+			}
+
 			bandera = true;
 		}
 		if (e.getExtendedKeyCode() == KeyEvent.VK_ESCAPE) {
@@ -68,17 +74,10 @@ public class checador extends Frame implements KeyListener, Runnable {
 				registerCheck();
 				area.setText("");
 				stop = true;
-				r.setText("Presione esc para continuar");
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 
 			} else {
 				if (stop) {
-					r.setText("Presione ESC para registrar");
+					r.setText("Presione ESC para continuar");
 				} else {
 					l.setText(reloj);
 					r.setText("Ingrese su usuario y presione ENTER para registrar");
